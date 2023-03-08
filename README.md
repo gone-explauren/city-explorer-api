@@ -16,15 +16,15 @@
 
 ### Lab-07
 
-* Name of feature: 
-Estimate of time needed to complete: 
-Start time: 
-Finish time: 
-Actual time needed to complete: 
+* Name of feature: Set-Up Server Repo
+Estimate of time needed to complete: 1hr
+Start time: 3:04PM
+Finish time: 3:58PM
+Actual time needed to complete: 54min
 
-* Name of feature: 
-Estimate of time needed to complete: 
-Start time: 
+* Name of feature: Weather
+Estimate of time needed to complete: 2hr
+Start time: 4:04PM
 Finish time: 
 Actual time needed to complete: 
 
