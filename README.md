@@ -24,8 +24,10 @@ Actual time needed to complete: 54min
 
 * Name of feature: Weather
 Estimate of time needed to complete: 2hr
-Start time: 4:04PM
-Finish time: 
+Back-end Start time: 4:04PM
+Back-end Finish time: 5:43PM (1hr, 39min)
+Front-end Start time:
+Front-end Finish time:
 Actual time needed to complete: 
 
 * Name of feature: 
