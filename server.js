@@ -12,7 +12,7 @@ require('dotenv').config();
 // we must include cors if we want to share resources over the web
 const cors = require('cors');
 
-let weatherData = require('./weather.json');
+const axios = require('axios');
 
 
 // once we have express we must use it
@@ -30,18 +30,38 @@ app.get('/', (request, response) => {
 
 
 // example request: http://localhost:3001/weather?search=Seattle
-app.get('/weather', (request, response, next) => {
+app.get('/weather', async (request, response, next) => {
   try {
-    let cityRequested = request.query.search;
-    // console.log(request.query);
+    // console.log('hi friend :P');
+    let url = `https://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHER_API_KEY}&units=I&days=3&lat=${request.query.lat}&lon=${request.query.lon}`;
+    // console.log(url);
 
-    let cityObject = weatherData.find(data => data.city_name === cityRequested);
-    // console.log(weatherObject);
+    let resultsFromAPI = await axios.get(url);
+    // console.log(resultsFromAPI.data);
 
-    let forecastData = cityObject.data.map(forecast => new Forecast(forecast));
+    let forecastData = resultsFromAPI.data.data.map(forecast => new Forecast(forecast));
     // console.log(forecastData);
 
     response.send(forecastData);
+
+  } catch (error) {
+    // next is built into express and acts as a console.log
+    next(error);
+  }
+});
+
+app.get('/movies', async (req, res, next) => {
+  try {
+    let url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIES_API_KEY}&language=en-US&include_adult=false&query=${req.query.movie}`;
+    // console.log(url);
+
+    let resultsFromAPI = await axios.get(url);
+    // console.log(resultsFromAPI.data);
+
+    let movieData = resultsFromAPI.data.data.map(movie => new Movie(movie));
+    // console.log(movieData);
+
+    res.send(movieData);
 
   } catch (error) {
     // next is built into express and acts as a console.log
@@ -55,11 +75,23 @@ app.get('*', (req, res) => {
   res.send('This resource does not exist');
 });
 
+
 // CLASSES
 class Forecast {
   constructor(forecastData) {
+
     this.date = forecastData.datetime;
     this.description = `Low of ${forecastData.low_temp}, high of ${forecastData.max_temp} with ${forecastData.weather.description.toLowerCase()}`;
+
+  }
+}
+
+class Movie {
+  constructor(movieData) {
+    this.title = movieData.title;
+    this.released = movieData.release_date;
+    this.img = `https://api.themoviedb.org${movieData.poster_path}`;
+    this.synopsis = movieData.overview;
   }
 }
 
