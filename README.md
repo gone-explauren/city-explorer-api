@@ -34,10 +34,23 @@ Start time: 1:06PM
 Finish time: 1:52PM
 Actual time needed to complete: 46min
 
+* Name of feature: Weather (live)
+Estimate of time needed to complete: 2hr
+Start time: 2:12PM
+Finish time: 4:32PM
+Actual time needed to complete: 2hr, 20min
+
+* Name of feature: Movies
+Estimate of time needed to complete: 3hr
+Start time: 4:41PM
+Finish time: 5:30PM
+Actual time needed to complete: 49min
+
 ## Change Log
 
-* 03/07/2023 3:58PM Server is working!
+* 03/07/2023 3:58PM Server is live!
 * 03/07/2023 5:43PM Back-end functional
 * 03/08/2023 1:05PM Front-end is functional
+* 03/08/2023 4:34PM Live weather data available
 
 ## Credit and Collaborations
