@@ -15,9 +15,6 @@ require('dotenv').config();
 // we must include cors if we want to share resources over the web
 const cors = require('cors');
 
-const axios = require('axios');
-
-
 // once we have express we must use it
 const app = express();
 app.use(cors());
@@ -37,14 +34,14 @@ app.get('/', (request, response) => {
   response.send('Hello from my first server!');
 });
 
-app.get('/modules/weather', getWeather);
-app.get('/modules/movies', getMovies);
+app.get('/weather', getWeather);
+app.get('/movies', getMovies);
 
-// create a 404 error
-// must be listed **last** in our route list (because of the * wild card)
-app.get('*', (req, res) => {
-  res.send('This resource does not exist');
-});
+// // create a 404 error
+// // must be listed **last** in our route list (because of the * wild card)
+// app.get('*', (req, res) => {
+//   res.send('This resource does not exist');
+// });
 
 
 // ERRORS -----
